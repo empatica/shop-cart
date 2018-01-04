@@ -10,7 +10,7 @@ This product is not associated nor endorsed by Shopify. ShopCart uses undocument
 ShopCart source code and builds can be downloaded from github or via npm.
 
 ```
-npm install shopify-cart
+npm install shop-cart
 ```
 
 Include ShopCart in your web page as a script before the initialization script. It's recommended to place both these scripts at the end of your page content.
@@ -103,18 +103,18 @@ Some features of ShopCart can be configured to make it work properly with your s
 ## API
 
 ```
-ShopCart.getItem(UPC)
+ShopCart.getItem(PRODUCT_VARIANT_UPC)
 ```
 > Returns the item with the given UPC. If the UPC is not listed in the `config.products` array, `null` value is returned.
 
 ```
-ShopCart.setItem(UPC)
+ShopCart.setItem(PRODUCT_VARIANT_UPC)
 ```
 > Adds the item with the given UPC to the cart. If the item is already in the cart, the quantity is incremented. Returns the number of items in the cart for the given UPC.
 If the UPC is not listed in the `config.products` array, `null` value is returned.
 
 ```
-ShopCart.removeItem(UPC)
+ShopCart.removeItem(PRODUCT_VARIANT_UPC)
 ```
 > Removes the item with the given UPC to the cart. If the item is already in the cart, the quantity is decremented. Returns the number of items in the cart for the given UPC.
 If the UPC is not listed in the `config.products` array, `null` value is returned.
@@ -152,10 +152,21 @@ element.store-cart-footer.active
 When cart has at least one element, attach the class `active` to the elment with class `cart-quantity-notification`, `store-cart-area` and `store-cart-footer`.
 
 ```
-element.store-cart.PRODUCT_ID
+element.store-cart.PRODUCT_UNIQUE_ID
 ```
 The `PRODUCT_ID` associated to each product available is attached to each element with class `store-cart`.
 
+
+## Support
+
+Shop cart should work properly with major modern browsers and has been tested with the following:
+
+- Chrome 63
+- Firefox 57
+- Safari 11
+- Opera 49
+- Edge 38
+- IE 9
 
 ## Example
 [Empatica Store](https://empatica.com/store)
