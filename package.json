@@ -1,0 +1,46 @@
+{
+  "name": "shop-cart",
+  "version": "1.0.0",
+  "description": "ShopCart is a custom cart designed to replace the official Shopify Buy Button implementation",
+  "main": "./dist/index.store.min.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/empatica/shop-cart.git"
+  },
+  "bugs": {
+    "url": "https://github.com/empatica/shop-cart/issues",
+    "email": "poltro90.mb@gmail.com"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "shopify",
+    "cart",
+    "store"
+  ],
+  "author": {
+    "name": "Marco Bassi",
+    "email": "poltro90.mb@gmail.com"
+  },
+  "license": "MIT",
+  "maintainers": [
+    {
+      "name": "poltro90",
+      "email": "poltro90.mb@gmail.com"
+    }
+  ],
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.6.1",
+    "gulp-typescript": "^3.2.3",
+    "gulp-uglify": "^3.0.0",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {
+    "store": "^2.0.12"
+  }
+}
