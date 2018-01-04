@@ -84,13 +84,17 @@ Some features of ShopCart can be configured to make it work properly with your s
       "name": "PRODUCT_NAME",
       "description": "PRODUCT_DESCRIPTION",
       "price": PRODUCT_PRICE,
-      "imageKey": "PRODUCT_IMAGE_KEY",
+      "image": {
+        "url": "PRODUCT_IMAGE"
+      },
       "variants": [
         {
           "name": "PRODUCT_VARIANT_NAME",
           "upc": PRODUCT_VARIANT_UPC,
           "sku": "PRODUCT_VARIANT_SKU",
-          "imageKey": "PRODUCT_VARIANT_IMAGE_KEY"
+          "image": {
+            "url": "PRODUCT_VARIANT_IMAGE"
+          }
         },
         ...
       ]
