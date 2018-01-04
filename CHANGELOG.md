@@ -1,3 +1,6 @@
+## Unreleased
+
+
 ## 1.1.0 (2018-01-04)
 - New product image configuration
 
