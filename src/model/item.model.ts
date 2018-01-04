@@ -34,7 +34,11 @@ module ShopCart {
       var image = ShopCart.productVariantsImageMap[this.item.upc];
       var imageBasePath = config && config.image && config.image.basePath ? config.image.basePath : './images/'
       t += '<table><tr>';
-      t += '<td class="product-image"><img src="' + imageBasePath + image.cart + '"></td>';
+      t += '<td class="product-image">';
+      if (image && image.url) {
+        t += '<img src="' + imageBasePath + image.url + '">';
+      }
+      t += '</td>'
       t += '<td class="product-details"><div class="product-name">' + product.name + '</div>';
       if (this.item.productvariant.name) {
         t += '<div class="item-name">Color: ' + this.item.productvariant.name + '</div>';

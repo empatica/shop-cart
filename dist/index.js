@@ -584,9 +584,9 @@ var ShopCart;
             for (var i = 0; i < config.products.length; i++) {
                 var p = config.products[i];
                 for (var j = 0; j < p.variants.length; j++) {
-                    ShopCart.variantProductMap[p.variants[j].upc] = new ShopCart.Product(p.id, p.name, p.price, p.description, p.imageKey);
-                    ShopCart.productVariantsImageMap[p.variants[j].upc] = new ShopCart.ProductImage(p.variants[j].imageKey);
-                    ShopCart.variantMap[p.variants[j].upc] = new ShopCart.ProductVariant(p.variants[j].name, p.variants[j].upc, p.variants[j].sku, p.variants[j].size, p.variants[j].imageKey);
+                    ShopCart.variantProductMap[p.variants[j].upc] = new ShopCart.Product(p.id, p.name, p.price, p.description, p.image.url);
+                    ShopCart.productVariantsImageMap[p.variants[j].upc] = new ShopCart.ProductImage(p.variants[j].image.url);
+                    ShopCart.variantMap[p.variants[j].upc] = new ShopCart.ProductVariant(p.variants[j].name, p.variants[j].upc, p.variants[j].sku, p.variants[j].size, p.variants[j].image.url);
                 }
             }
         };
@@ -629,7 +629,11 @@ var ShopCart;
             var image = ShopCart.productVariantsImageMap[this.item.upc];
             var imageBasePath = config && config.image && config.image.basePath ? config.image.basePath : './images/';
             t += '<table><tr>';
-            t += '<td class="product-image"><img src="' + imageBasePath + image.cart + '"></td>';
+            t += '<td class="product-image">';
+            if (image && image.url) {
+                t += '<img src="' + imageBasePath + image.url + '">';
+            }
+            t += '</td>';
             t += '<td class="product-details"><div class="product-name">' + product.name + '</div>';
             if (this.item.productvariant.name) {
                 t += '<div class="item-name">Color: ' + this.item.productvariant.name + '</div>';
@@ -657,43 +661,43 @@ var ShopCart;
 ;var ShopCart;
 (function (ShopCart) {
     var ProductImage = (function () {
-        function ProductImage(key, ext) {
-            if (ext === void 0) { ext = '.jpg'; }
-            this.key = key;
-            this.url = key + '-xhdpi' + ext;
-            this.cart = ShopCartConst.PREFIX_CART_IMAGE + key + '.png';
-            this.ldpi = key + '-ldpi' + ext;
-            this.mdpi = key + '-mdpi' + ext;
-            this.hdpi = key + '-hdpi' + ext;
-            this.xhdpi = key + '-xhdpi' + ext;
-            this.icon = key + '-icon' + ext;
+        function ProductImage(url) {
+            this.url = url;
+            this.setKey(this.url);
         }
+        ProductImage.prototype.setKey = function (url) {
+            if (!url) {
+                return;
+            }
+            var a = url.substring(url.lastIndexOf('/') + 1), b = a.lastIndexOf('.');
+            this.key = b > 0 ? a.substr(0, b) : a;
+        };
         return ProductImage;
     }());
     ShopCart.ProductImage = ProductImage;
     var ProductVariant = (function () {
-        function ProductVariant(name, upc, sku, size, imageKey) {
+        function ProductVariant(name, upc, sku, size, imageUrl) {
             if (size === void 0) { size = null; }
-            if (imageKey === void 0) { imageKey = null; }
+            if (imageUrl === void 0) { imageUrl = null; }
             this.name = name;
             this.upc = upc;
             this.sku = sku;
             this.size = size;
-            this.image = imageKey ? new ProductImage(imageKey) : null;
+            this.image = imageUrl ? new ProductImage(imageUrl) : null;
         }
         return ProductVariant;
     }());
     ShopCart.ProductVariant = ProductVariant;
     var Product = (function () {
-        function Product(id, name, price, description, imageKey, variants) {
+        function Product(id, name, price, description, imageUrl, variants) {
             if (description === void 0) { description = null; }
-            if (imageKey === void 0) { imageKey = null; }
+            if (imageUrl === void 0) { imageUrl = null; }
             if (variants === void 0) { variants = null; }
             this.id = id;
             this.name = name;
             this.price = price;
             this.description = description ? description : "";
-            this.image = imageKey ? new ProductImage(imageKey) : null;
+            this.image = imageUrl ? new ProductImage(imageUrl) : null;
             this.variants = variants ? variants : [];
         }
         return Product;

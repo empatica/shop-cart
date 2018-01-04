@@ -1,6 +1,6 @@
 {
   "name": "shop-cart",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "ShopCart is a custom cart designed to replace the official Shopify Buy Button implementation",
   "main": "./dist/index.store.min.js",
   "repository": {

@@ -471,9 +471,9 @@ module ShopCart {
       for (var i = 0; i < config.products.length; i++) {
         var p = config.products[i];
         for (var j = 0; j < p.variants.length; j++) {
-          ShopCart.variantProductMap[p.variants[j].upc] = new ShopCart.Product(p.id, p.name, p.price, p.description, p.imageKey);
-          ShopCart.productVariantsImageMap[p.variants[j].upc] = new ShopCart.ProductImage(p.variants[j].imageKey);
-          ShopCart.variantMap[p.variants[j].upc] = new ProductVariant(p.variants[j].name, p.variants[j].upc, p.variants[j].sku, p.variants[j].size, p.variants[j].imageKey);
+          ShopCart.variantProductMap[p.variants[j].upc] = new ShopCart.Product(p.id, p.name, p.price, p.description, p.image.url);
+          ShopCart.productVariantsImageMap[p.variants[j].upc] = new ShopCart.ProductImage(p.variants[j].image.url);
+          ShopCart.variantMap[p.variants[j].upc] = new ProductVariant(p.variants[j].name, p.variants[j].upc, p.variants[j].sku, p.variants[j].size, p.variants[j].image.url);
         }
       }
     }

@@ -2,24 +2,21 @@
 
 module ShopCart {
   export class ProductImage {
-    key: string
     url: string
-    cart: string
-    ldpi: string
-    mdpi: string
-    hdpi: string
-    xhdpi: string
-    icon: string
+    key: string
 
-    constructor(key: string, ext: string = '.jpg') {
-      this.key = key
-      this.url = key + '-xhdpi' + ext;
-      this.cart = ShopCartConst.PREFIX_CART_IMAGE + key + '.png';
-      this.ldpi = key + '-ldpi' + ext;
-      this.mdpi = key + '-mdpi' + ext;
-      this.hdpi = key + '-hdpi' + ext;
-      this.xhdpi = key + '-xhdpi' + ext;
-      this.icon = key + '-icon' + ext;
+    constructor(url: string) {
+      this.url = url;
+      this.setKey(this.url);
+    }
+
+    private setKey(url) {
+      if (!url) {
+        return;
+      }
+      var a = url.substring(url.lastIndexOf('/') + 1),
+        b = a.lastIndexOf('.');
+      this.key = b > 0 ? a.substr(0, b) : a;
     }
   }
 
@@ -29,12 +26,12 @@ module ShopCart {
     sku: string
     size: string
     image: ProductImage
-    constructor(name: string, upc: number, sku: string, size: string = null, imageKey: string = null) {
+    constructor(name: string, upc: number, sku: string, size: string = null, imageUrl: string = null) {
       this.name = name
       this.upc = upc
       this.sku = sku
       this.size = size
-      this.image = imageKey ? new ProductImage(imageKey) : null
+      this.image = imageUrl ? new ProductImage(imageUrl) : null
     }
   }
 
@@ -45,12 +42,12 @@ module ShopCart {
     price: number
     image: ProductImage
     variants: Array<ProductVariant>
-    constructor(id: string, name: string, price: number, description: string = null, imageKey: string = null, variants: Array<ProductVariant> = null) {
+    constructor(id: string, name: string, price: number, description: string = null, imageUrl: string = null, variants: Array<ProductVariant> = null) {
       this.id = id
       this.name = name
       this.price = price
       this.description = description ? description : ""
-      this.image = imageKey ? new ProductImage(imageKey) : null
+      this.image = imageUrl ? new ProductImage(imageUrl) : null
       this.variants = variants ? variants : []
     }
   }
