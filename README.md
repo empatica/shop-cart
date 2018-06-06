@@ -173,7 +173,7 @@ Actions on the cart will trigger custom events to which it's possible to subscri
 
 ### Cart ready to be used
   ```
-  window.addEventListener("shop-cart-init", function(e) {
+  window.addEventListener("shop-cart-ready", function(e) {
     ...
   });
   ```
