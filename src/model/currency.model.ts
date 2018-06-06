@@ -1,13 +1,13 @@
 /// <reference path="./index.d.ts" />
 
-module ShopCart {
+namespace ShopCart {
   export class Currency {
-    name: string
-    code: string
-    symbol: string
-    label: string
-    default: boolean
+    name: string;
+    code: string;
+    symbol: string;
+    label: string;
+    default: boolean;
 
-    constructor() { }
+    constructor() {}
   }
 }

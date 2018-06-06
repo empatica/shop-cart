@@ -161,6 +161,47 @@ element.store-cart.PRODUCT_UNIQUE_ID
 The `PRODUCT_ID` associated to each product available is attached to each element with class `store-cart`.
 
 
+## Events
+Actions on the cart will trigger custom events to which it's possible to subscribe.
+
+### Cart init started
+  ```
+  window.addEventListener("shop-cart-init", function(e) {
+    ...
+  });
+  ```
+
+### Cart ready to be used
+  ```
+  window.addEventListener("shop-cart-init", function(e) {
+    ...
+  });
+  ```
+### Product added
+  ```
+  window.addEventListener("shop-cart-add", function(e) {
+    ...
+    console.log(e.detail); // The field 'detail' contains the UPC of the product added
+    ...
+  });
+  ```
+
+### Product removed
+  ```
+  window.addEventListener("shop-cart-remove", function(e) {
+    ...
+    console.log(e.detail); // The field 'detail' contains the UPC of the product removed
+    ...
+  });
+  ```
+
+### Cart opened
+  ```
+  window.addEventListener("shop-cart-open", function(e) {
+    ...
+  });
+  ```
+
 ## Support
 
 Shop cart should work properly with major modern browsers and has been tested with the following:
