@@ -42,12 +42,12 @@ module.exports = engine.createStore(storages, plugins)
     ShopCartConst.OPEN_EVT = "shop-cart-open";
     ShopCartConst.CLOSE_EVT = "shop-cart-close";
     ShopCartConst.INIT_EVT = "shop-cart-init";
-    ShopCartConst.READY_EVT = "shop-cart-init";
+    ShopCartConst.READY_EVT = "shop-cart-ready";
 })(ShopCartConst || (ShopCartConst = {}));
 
 ;var ShopCart;
 (function (ShopCart) {
-    ShopCart.CART_INVALID_BEFORE = 1515076732673;
+    ShopCart.CART_INVALID_BEFORE = 1540803448000;
     var Cart = (function () {
         function Cart(currency, cart) {
             if (cart === void 0) { cart = null; }

@@ -3,9 +3,9 @@ namespace ShopCart {
   /*
   CART_INVALID_BEFORE
 
-  This value will be used to invalidate an old cart that is no longer supported.
+  This value (millisecond timestamp) will be used to invalidate an old cart that is no longer supported.
   */
-  export const CART_INVALID_BEFORE = 1515076732673;
+  export const CART_INVALID_BEFORE = 1540803448000;
 
   export class Cart {
     id: string;
